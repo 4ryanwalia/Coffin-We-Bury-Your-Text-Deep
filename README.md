@@ -1,36 +1,64 @@
-# Cryptoji - Emoji Crypto API
+# ⚰️ Coffin - We Bury Your Text Deep
 
-A Django REST Framework API that transforms plain text into encrypted emoji sequences and back again using RSA and AES encryption.
+> **Premium burial services for your digital secrets**
 
-## Overview
+Transform your messages into beautiful, encrypted emoji sequences using cutting-edge hybrid encryption. Dead serious about your privacy.
 
-Cryptoji is a unique encryption service that converts regular text messages into emoji-based ciphertexts. Built with Django REST Framework, it uses a hybrid encryption approach combining RSA for key exchange and AES for efficient message encryption. The encrypted data is then encoded as a sequence of emojis, making cryptographic messages more visually appealing and fun to share.
+![Coffin Logo](https://img.shields.io/badge/Coffin-We%20Bury%20Your%20Text%20Deep-000000?style=for-the-badge&logo=coffin&logoColor=white)
+![Django](https://img.shields.io/badge/Django-4.2.24-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-**Key Features:**
-- Hybrid RSA + AES encryption for security and performance
-- Emoji-based ciphertext encoding
-- RESTful API endpoints for easy integration
-- JSON request/response format
-- Stateless encryption/decryption operations
+## 🎯 What is Coffin?
 
-## Tech Stack
+Coffin is a unique encryption service that converts regular text messages into emoji-based ciphertexts. Built with Django REST Framework, it uses a hybrid encryption approach combining RSA for key exchange and AES for efficient message encryption. The encrypted data is then encoded as a sequence of emojis, making cryptographic messages more visually appealing and fun to share.
 
-- **Python 3.x** - Core programming language
-- **Django** - Web framework
+### 🔐 Key Features
+
+- **⚰️ Premium Burial Services** - Military-grade encryption that buries your secrets deep
+- **💀 Emoji Embalming** - Transform encrypted data into beautiful emoji sequences
+- **⚡ Lightning Fast Burial** - Instant encryption and decryption
+- **🌐 Global Burial Services** - Works on any platform, device, or messaging app
+- **🔧 Developer Friendly** - Simple REST API with comprehensive documentation
+- **🎯 Zero Configuration Burial** - No setup required, just bury and go
+
+## 🚀 Live Demo
+
+Visit the live demo at: [Coffin Demo](https://your-demo-url.com)
+
+## 🛠️ Tech Stack
+
+### Backend
+- **Python 3.9+** - Core programming language
+- **Django 4.2.24** - Web framework
 - **Django REST Framework** - API framework for building REST endpoints
 - **Cryptography** - Python library for RSA and AES encryption
+- **SQLite** - Database for development
 
-## Installation
+### Frontend
+- **HTML5** - Semantic markup
+- **CSS3** - Advanced styling with CSS variables, grid, flexbox
+- **Vanilla JavaScript** - No frameworks, pure performance
+- **Glassmorphism** - Modern UI design effects
+- **Responsive Design** - Works on all devices
 
-Follow these steps to set up the project locally:
+## 📦 Installation & Setup
+
+### Prerequisites
+
+- Python 3.9 or higher
+- pip (Python package installer)
+- Git
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/yourusername/cryptoji.git
-cd cryptoji
+git clone https://github.com/4ryanwalia/Coffin-We-Bury-Your-Text-Deep.git
+cd Coffin-We-Bury-Your-Text-Deep
 ```
 
 ### 2. Create Virtual Environment
+
 ```bash
 # Create virtual environment
 python -m venv venv
@@ -43,23 +71,26 @@ source venv/bin/activate
 ```
 
 ### 3. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Run Database Migrations
+
 ```bash
 python manage.py migrate
 ```
 
-### 5. Start Development Server
+### 5. Start the Backend Server
+
 ```bash
 python manage.py runserver
 ```
 
-The API will be available at `http://localhost:8000/`
+The Django backend will be available at: `http://localhost:8000/`
 
-## API Endpoints
+## 🌐 API Endpoints
 
 ### Encrypt Text to Emojis
 
@@ -68,7 +99,7 @@ The API will be available at `http://localhost:8000/`
 **Request Body:**
 ```json
 {
-  "message": "hello"
+  "message": "Hello, World!"
 }
 ```
 
@@ -78,17 +109,6 @@ The API will be available at `http://localhost:8000/`
   "encrypted": "😄🎉🌟💫🚀🎈🌈✨🎊🔥🌺🦋🎭🎪🎨"
 }
 ```
-
-**Postman Example:**
-- Method: `POST`
-- URL: `http://localhost:8000/api/encrypt/`
-- Headers: `Content-Type: application/json`
-- Body (raw JSON):
-  ```json
-  {
-    "message": "Hello, World!"
-  }
-  ```
 
 ### Decrypt Emojis to Text
 
@@ -104,111 +124,169 @@ The API will be available at `http://localhost:8000/`
 **Response:**
 ```json
 {
-  "message": "hello"
+  "message": "Hello, World!"
 }
 ```
 
-**Postman Example:**
-- Method: `POST`
-- URL: `http://localhost:8000/api/decrypt/`
-- Headers: `Content-Type: application/json`
-- Body (raw JSON):
-  ```json
-  {
-    "emoji_text": "😄🎉🌟💫🚀🎈🌈✨🎊🔥🌺🦋🎭🎪🎨"
-  }
-  ```
+### Get Key Information
 
-## Frontend Usage
+**Endpoint:** `GET /api/key-info/`
 
-Frontend applications can easily integrate with the Cryptoji API using standard HTTP clients:
-
-### Using Fetch API
-```javascript
-// Encrypt a message
-const encryptMessage = async (message) => {
-  const response = await fetch('http://localhost:8000/api/encrypt/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ message }),
-  });
-  const data = await response.json();
-  return data.encrypted;
-};
-
-// Decrypt emoji text
-const decryptMessage = async (emojiText) => {
-  const response = await fetch('http://localhost:8000/api/decrypt/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ emoji_text: emojiText }),
-  });
-  const data = await response.json();
-  return data.message;
-};
+**Response:**
+```json
+{
+  "key_exists": true,
+  "created_at": "2024-01-01T00:00:00",
+  "key_size": 2048,
+  "algorithm": "RSA",
+  "message": "Keys are persistent - encrypted messages will work after server restart!"
+}
 ```
 
-### Using Axios
-```javascript
-import axios from 'axios';
+### Regenerate Keys (WARNING: This will break existing encrypted messages!)
 
-const api = axios.create({
-  baseURL: 'http://localhost:8000/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+**Endpoint:** `POST /api/regenerate-keys/`
 
-// Encrypt a message
-const encryptMessage = async (message) => {
-  const response = await api.post('/encrypt/', { message });
-  return response.data.encrypted;
-};
-
-// Decrypt emoji text
-const decryptMessage = async (emojiText) => {
-  const response = await api.post('/decrypt/', { emoji_text: emojiText });
-  return response.data.message;
-};
+**Response:**
+```json
+{
+  "success": true,
+  "message": "New encryption keys generated successfully!",
+  "warning": "All previously encrypted messages are now undecryptable!"
+}
 ```
 
-**Important:** Always ensure you're sending the `Content-Type: application/json` header with your requests.
+## 🎨 Frontend Features
 
-## Running Notes
+### Interactive Elements
+- **⚰️ Coffin-themed branding** throughout the interface
+- **🌟 Floating emoji constellation** background with interactive particles
+- **🌙 Dark/Light theme toggle** with smooth transitions
+- **📱 Responsive design** that works on all devices
+- **✨ Glassmorphism effects** for a premium feel
 
-### Key Generation and Persistence
+### User Experience
+- **🔄 Live encryption demo** with real-time API integration
+- **📋 Copy to clipboard** functionality with animated feedback
+- **🎯 Sample text/emoji buttons** for quick testing
+- **🔔 Toast notifications** for user feedback
+- **⚡ Smooth animations** and micro-interactions
 
-- **Development Mode**: Encryption keys are generated at runtime when the server starts. This means that emoji ciphertexts encrypted in one session will only be valid until the server restarts.
+## 🔧 Development
 
-- **Production Considerations**: For production deployments, you should implement key persistence to maintain decryption capabilities across server restarts. Consider:
-  - Storing keys in environment variables
-  - Using a secure key management service
-  - Implementing a database-backed key store
-  - Setting up proper key rotation policies
+### Project Structure
 
-### Security Considerations
+```
+Coffin-We-Bury-Your-Text-Deep/
+├── api/                    # Django API app
+│   ├── views.py           # API endpoints
+│   ├── crypto_utils.py    # Encryption logic
+│   ├── key_manager.py     # Persistent key management
+│   ├── serializers.py     # Request validation
+│   └── urls.py           # API routes
+├── cryptoji/              # Django project settings
+├── templates/             # Frontend files
+│   ├── index.html        # Main HTML file
+│   ├── style.css         # CSS styles
+│   └── script.js         # JavaScript functionality
+├── manage.py             # Django management script
+├── requirements.txt      # Python dependencies
+└── README.md            # This file
+```
 
-- The current implementation is designed for demonstration purposes
-- In production, implement proper key management and storage
-- Consider adding authentication and rate limiting
-- Ensure HTTPS is used for all API communications
-- Implement proper error handling without exposing sensitive information
+### Key Management
 
-### Development Tips
+The application uses a persistent key management system that:
+- **Generates RSA keys** on first run
+- **Stores keys securely** in the `api/keys/` directory
+- **Maintains encryption compatibility** across server restarts
+- **Provides key information** via API endpoint
+- **Allows key regeneration** (with warning about breaking existing messages)
 
-- Use the Django admin interface to monitor API usage if needed
-- Enable Django's debug toolbar for development insights
-- Consider adding logging for encryption/decryption operations
-- Test with various message lengths and character sets
+### Security Features
 
-## Contributing
+- **Hybrid Encryption**: RSA + AES for security and performance
+- **OAEP Padding**: Secure padding with SHA-256
+- **AES-CTR Mode**: Efficient encryption for large messages
+- **256 Unique Emojis**: Secure encoding with visual appeal
+- **Persistent Keys**: Maintains decryption capability across restarts
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## 🚀 Deployment
+
+### Local Development
+
+1. Follow the installation steps above
+2. Run `python manage.py runserver`
+3. Visit `http://localhost:8000/`
+
+### Production Deployment
+
+For production deployment, consider:
+
+1. **Environment Variables**: Store sensitive data in environment variables
+2. **Database**: Use PostgreSQL or MySQL instead of SQLite
+3. **Static Files**: Configure proper static file serving
+4. **HTTPS**: Ensure all communications are encrypted
+5. **Key Management**: Implement secure key storage and rotation
+
+### Docker Deployment (Optional)
+
+```dockerfile
+FROM python:3.9
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+```
+
+## 🤝 Contributing
+
+We welcome contributions to make Coffin even better! Here's how you can help:
+
+1. **Fork the repository**
+2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit your changes** (`git commit -m 'Add some amazing feature'`)
+4. **Push to the branch** (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request**
+
+### Development Guidelines
+
+- Follow PEP 8 for Python code
+- Use meaningful commit messages
+- Add tests for new features
+- Update documentation as needed
+- Ensure responsive design for frontend changes
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Ryan Walia**
+- GitHub: [@4ryanwalia](https://github.com/4ryanwalia)
+- Project: [Coffin - We Bury Your Text Deep](https://github.com/4ryanwalia/Coffin-We-Bury-Your-Text-Deep)
+
+## 🙏 Acknowledgments
+
+- Django team for the amazing web framework
+- Cryptography library for secure encryption
+- All the emoji creators for making our messages beautiful
+- The open-source community for inspiration and tools
+
+## 🔮 Future Features
+
+- **🎮 Gamification**: Coffin collection system and achievements
+- **🌐 Social Features**: Share encrypted messages and challenges
+- **🤖 AI Integration**: Smart suggestions and predictions
+- **📱 Mobile App**: Native iOS and Android applications
+- **🔗 Integrations**: Discord bot, Slack integration, browser extension
+- **💰 Premium Features**: Advanced coffins and unlimited burials
+
+---
+
+**Remember**: We bury your text deep, so deep that even we can't find it! ⚰️✨
+
+*Built with 💀 by a developer who takes burial seriously.*
