@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffin - We Bury Your Text Deep</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚰️</text></svg>">
+</head>
+<body>
+    <!-- Floating Emoji Constellation Background -->
+    <div id="emoji-constellation"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">⚰️</span>
+                <span class="logo-text">Coffin</span>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="nav-menu-toggle" id="nav-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">We Bury Your Text</span>
+                    <span class="title-line gradient-text">Deep</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Premium burial services for your digital secrets. Transform your messages into encrypted emoji sequences 
+                    and bury them so deep, even we can't find them. Dead serious about your privacy.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" id="scroll-to-demo">
+                        <span>Try It Now</span>
+                        <div class="btn-ripple"></div>
+                    </button>
+                    <button class="btn btn-secondary" id="learn-more">
+                        <span>Learn More</span>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="encryption-preview">
+                    <div class="preview-card">
+                        <div class="preview-input">
+                            <span class="preview-label">Input</span>
+                            <div class="preview-text">Hello World!</div>
+                        </div>
+                        <div class="preview-arrow">
+                            <div class="arrow-line"></div>
+                            <div class="arrow-head"></div>
+                        </div>
+                        <div class="preview-output">
+                            <span class="preview-label">Encrypted</span>
+                            <div class="preview-emojis">😄🎉🌟💫🚀🎈🌈✨🎊🔥🌺🦋🎭🎪🎨</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo" id="demo">
+        <div class="demo-container">
+            <div class="section-header">
+                <h2 class="section-title">Live Burial Demo</h2>
+                <p class="section-subtitle">Watch your text get buried deep in emoji encryption</p>
+            </div>
+            
+            <div class="demo-panel">
+                <div class="demo-tabs">
+                    <button class="tab-btn active" data-tab="encrypt">Encrypt</button>
+                    <button class="tab-btn" data-tab="decrypt">Decrypt</button>
+                </div>
+                
+                <div class="demo-content">
+                    <!-- Encrypt Tab -->
+                    <div class="tab-content active" id="encrypt-tab">
+                        <div class="input-section">
+                            <label for="encrypt-input" class="input-label">Enter your message</label>
+                            <div class="input-group">
+                                <textarea 
+                                    id="encrypt-input" 
+                                    class="input-field" 
+                                    placeholder="Type your secret message here..."
+                                    rows="4"
+                                ></textarea>
+                                <div class="input-actions">
+                                    <button class="btn btn-sm btn-outline" id="sample-text-encrypt">Sample Text</button>
+                                    <button class="btn btn-sm btn-outline" id="clear-encrypt">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-section">
+                            <button class="btn btn-primary btn-large" id="encrypt-btn">
+                                <span class="btn-text">Bury Message Deep</span>
+                                <div class="btn-loading" id="encrypt-loading">
+                                    <div class="loading-spinner"></div>
+                                </div>
+                                <div class="btn-ripple"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="output-section" id="encrypt-output">
+                            <label class="output-label">Encrypted Emoji Sequence</label>
+                            <div class="output-display">
+                                <div class="output-content" id="encrypt-result"></div>
+                                <button class="copy-btn" id="copy-encrypt" title="Copy to clipboard">
+                                    <span class="copy-icon">📋</span>
+                                    <span class="copy-success">✓</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decrypt Tab -->
+                    <div class="tab-content" id="decrypt-tab">
+                        <div class="input-section">
+                            <label for="decrypt-input" class="input-label">Enter emoji sequence</label>
+                            <div class="input-group">
+                                <textarea 
+                                    id="decrypt-input" 
+                                    class="input-field" 
+                                    placeholder="Paste your emoji sequence here..."
+                                    rows="4"
+                                ></textarea>
+                                <div class="input-actions">
+                                    <button class="btn btn-sm btn-outline" id="sample-emoji-decrypt">Sample Emojis</button>
+                                    <button class="btn btn-sm btn-outline" id="clear-decrypt">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-section">
+                            <button class="btn btn-primary btn-large" id="decrypt-btn">
+                                <span class="btn-text">Exhume Message</span>
+                                <div class="btn-loading" id="decrypt-loading">
+                                    <div class="loading-spinner"></div>
+                                </div>
+                                <div class="btn-ripple"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="output-section" id="decrypt-output">
+                            <label class="output-label">Decrypted Message</label>
+                            <div class="output-display">
+                                <div class="output-content" id="decrypt-result"></div>
+                                <button class="copy-btn" id="copy-decrypt" title="Copy to clipboard">
+                                    <span class="copy-icon">📋</span>
+                                    <span class="copy-success">✓</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Coffin?</h2>
+                <p class="section-subtitle">Premium burial services for your digital secrets</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚰️</div>
+                    <h3 class="feature-title">Premium Burial Services</h3>
+                    <p class="feature-description">
+                        We bury your secrets so deep with military-grade encryption that even we can't find them. Dead serious about your privacy.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💀</div>
+                    <h3 class="feature-title">Emoji Embalming</h3>
+                    <p class="feature-description">
+                        Your secrets get the royal treatment - embalmed in beautiful emoji sequences using our curated collection of 256 unique emojis.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Lightning Fast Burial</h3>
+                    <p class="feature-description">
+                        We bury your secrets at lightning speed. No waiting around - your words get their eternal rest in seconds.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">Global Burial Services</h3>
+                    <p class="feature-description">
+                        We provide burial services worldwide. Your secrets can rest in peace on any platform, device, or messaging app.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3 class="feature-title">Developer Friendly</h3>
+                    <p class="feature-description">
+                        Simple REST API with comprehensive documentation. Integrate Coffin's burial services into your applications in minutes.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Zero Configuration Burial</h3>
+                    <p class="feature-description">
+                        No setup required. Just send your message and we'll bury it deep instantly. Your secrets get their eternal rest with zero hassle.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚰️</span>
+                        <span class="logo-text">Coffin</span>
+                    </div>
+                    <p class="footer-description">
+                        We bury your text deep. Premium burial services for your digital secrets.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 class="footer-title">Product</h4>
+                        <ul class="footer-list">
+                            <li><a href="#demo">Live Demo</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#">API Documentation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 class="footer-title">Developer</h4>
+                        <ul class="footer-list">
+                            <li><a href="https://github.com/4ryanwalia" target="_blank">GitHub</a></li>
+                            <li><a href="#">API Reference</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2024 Coffin. Built with 💀 by a developer who takes burial seriously.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

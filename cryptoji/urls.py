@@ -16,8 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+from django.shortcuts import render
+
+def home_view(request):
+    """Serve the frontend HTML file"""
+    return render(request, 'index.html')
 
 urlpatterns = [
+    path('', home_view, name='home'),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
 ]
