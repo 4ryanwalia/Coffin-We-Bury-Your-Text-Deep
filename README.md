@@ -561,4 +561,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Remember**: We bury your text deep, so deep that even we can't find it! ⚰️✨
 
-*Built with 💀 by a developer who takes burial seriously.*
+*Built with 💀 by a developer who takes burial seriously.*#   C o f f i n  
+ 
