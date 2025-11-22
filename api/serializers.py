@@ -14,7 +14,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = ('username', 'password', 'password_confirm')
+        fields = ('username', 'email', 'first_name', 'last_name', 'password', 'password_confirm')
     
     def validate(self, attrs):
         if attrs['password'] != attrs['password_confirm']:
@@ -24,7 +24,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data.pop('password_confirm')
         # Add a default email if not provided
-        if 'email' not in validated_data:
+        if not validated_data.get('email'):
             validated_data['email'] = f"{validated_data['username']}@cryptoji.local"
         user = User.objects.create_user(**validated_data)
         UserProfile.objects.create(user=user)
@@ -33,7 +33,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'date_joined')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'date_joined')
         read_only_fields = ('id', 'date_joined')
 
 class MessageCreateSerializer(serializers.Serializer):

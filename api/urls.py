@@ -17,6 +17,7 @@ urlpatterns = [
     # Messaging endpoints
     path('send/', views.send_message, name='send_message'),
     path('inbox/<str:username>/', views.get_inbox, name='inbox'),
+    path('conversation/<str:username>/', views.get_conversation, name='conversation'),
     path('users/', views.get_all_users, name='all_users'),
     path('mark-read/<int:message_id>/', views.mark_message_read, name='mark_read'),
 ]

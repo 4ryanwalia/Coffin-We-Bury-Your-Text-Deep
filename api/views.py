@@ -175,6 +175,31 @@ def get_inbox(request, username):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+def get_conversation(request, username):
+    """Get all messages in a conversation between current user and another user"""
+    try:
+        other_user = get_object_or_404(User, username=username)
+        
+        # Get messages where current user is sender and other user is recipient
+        sent_messages = Message.objects.filter(sender=request.user, recipient=other_user)
+        
+        # Get messages where current user is recipient and other user is sender
+        received_messages = Message.objects.filter(sender=other_user, recipient=request.user)
+        
+        # Combine and order by created_at
+        all_messages = (sent_messages | received_messages).order_by('created_at')
+        
+        serializer = MessageResponseSerializer(all_messages, many=True)
+        
+        return Response({
+            "messages": serializer.data,
+            "count": all_messages.count()
+        })
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_all_users(request):
     """Get list of all users (except current user)"""
     users = User.objects.exclude(id=request.user.id)
